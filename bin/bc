@@ -1,0 +1,14 @@
+local tArgs = { ... }
+
+if (#tArgs ~= 2) then
+  print( "USAGE: broadcast ID COMMAND" )
+  return
+end
+
+local id = tArgs[1]
+local command = tArgs[2]
+
+id = tonumber(id)
+
+rednet.open("top")
+rednet.send(id, command)

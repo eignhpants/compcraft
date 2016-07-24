@@ -1,1 +1,24 @@
-turtle.up()
+
+turtle.select(1)
+
+continue = true
+count = 0
+
+
+
+--print(a)
+while continue do
+  a = turtle.detectUp()
+  if not a then
+    count = count + 1
+    turtle.up()
+    turtle.placeDown()
+  else
+    continue = false
+    turtle.back()
+    turtle.down(count)
+    turtle.turnRight()
+    turtle.forward()
+    turtle.turnLeft()
+  end
+end
