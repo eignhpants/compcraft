@@ -1,0 +1,2 @@
+shell.run("rm bin/broadcast")
+shell.run("rm disk/*")
