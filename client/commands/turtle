@@ -5,7 +5,7 @@ continue = true
 count = 0
 
 
-
+function
 --print(a)
 while continue do
   a = turtle.detectUp()

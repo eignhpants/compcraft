@@ -1,0 +1,10 @@
+
+local parent = "none"
+
+function setParent(id)
+    parent = id
+end
+
+function returnParent()
+    print(parent)
+end

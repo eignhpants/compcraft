@@ -1,2 +1,3 @@
-shell.run("cp /client/startup /startup")
+shell.run("cp /disk/client /client")
 shell.setPath(shell.path()..":/client")
+shell.run("cp /client/startup /startup")

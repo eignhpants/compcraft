@@ -1,0 +1,5 @@
+local connections = {}
+
+function broadcast(msg)
+    rednet.boradcast(msg)
+end
