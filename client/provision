@@ -1,2 +1,2 @@
 shell.run("cp /client/startup /startup")
-shell.setPath(shell.path()..":/client/commands")
+shell.setPath(shell.path()..":/client")
