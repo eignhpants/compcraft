@@ -1,1 +1,2 @@
-fs.copy("/disk","./")
+shell.run("cp /client/startup /startup")
+shell.setPath(shell.path()..":/client/commands")
