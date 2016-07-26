@@ -1,0 +1,24 @@
+local turtle = "d35624dee5cf6cfeb00b58c75cd555d2"
+local receive = "9eb03397ba45d91574677b54f7f1a8c2"
+local broadcast = "f3266399ed7d5769f6b0d9bda5a3cdf9"
+local server = "90af346681bee9d623498124abea8368"
+
+shell.run("mkdir apis")
+shell.run("mkdir bin")
+
+-- get git programs uitiltites
+shell.run("pastebin get qKFwER8E /apis/dkjson")
+shell.run("pastebin get Vw228KFe /apis/github")
+shell.run("pastebin get ngT4xniw bin/github")
+
+shell.setPath(shell.path()..":/bin")
+
+shell.run("github clone eignhpants/compcraft")
+
+
+shell.run("mv compcraft/server /server")
+shell.run("mv compcraft/client /disk")
+
+shell.run("mv server/startup /startup")
+print("Machine provisioned")
+shell.run("reboot")

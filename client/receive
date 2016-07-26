@@ -4,9 +4,9 @@ local run = true
 
 while true do
   id, msg = rednet.receive()
-  print("Message received from "..id)
+  rednet.send(id, "200 OK")
   if msg == "interupt" then
     run = false
   end
-  shell.run(msg)
+  print(msg)
 end
