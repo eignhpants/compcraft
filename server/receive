@@ -4,9 +4,9 @@ local run = true
 
 while true do
   id, msg = rednet.receive()
-  rednet.send(id, "200 OK")
-  if msg == "interupt" then
-    run = false
+  print("Received message from "..id..":")
+  if server.checkConn == true then
+    server.addConnection(id)
   end
   print(msg)
 end

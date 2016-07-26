@@ -3,3 +3,22 @@ local connections = {}
 function broadcast(msg)
     rednet.boradcast(msg)
 end
+
+function addConnection(id)
+    connections.insert(id)
+end
+
+function checkConn(id)
+    for k, v in ipairs(connections) do
+        if v == id then
+            return true
+        end
+    end
+    return false
+end
+
+function listConnections()
+    for k, v in ipairs(connections) do
+        print(v)
+    end
+end
