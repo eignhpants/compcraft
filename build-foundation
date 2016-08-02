@@ -111,6 +111,7 @@ end
 
 
 function buildLine()
+    turtle.select(MATERIAL_SLOT)
     turtle.up()
     for i = 1, depth do
         if turtle.getFuelLevel() < 10 then
