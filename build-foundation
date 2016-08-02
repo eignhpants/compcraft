@@ -12,9 +12,16 @@ tArgs = {...}
 
 --print(tArgs[1] .. " " .. type(tArgs[1]) .. " " .. tArgs[2] .. " " .. type(tArgs[2]) .. " " .. tArgs[3] .. " " .. type(tArgs[3]))
 
-if type(tArgs[1]) == "string" and type(tArgs[2]) == "string" and tonumber(tArgs[1]) > 0 and tonumber(tArgs[2]) > 0 and tonumber(tArgs[3]) ~= 0 then
+if #tArgs ~= 1 then
+    print( "Usage: build-foundation <depth> <width> <material>" )
+    return
+end
+
+
+if type(tArgs[1]) == "string" and type(tArgs[2]) == "string" and tonumber(tArgs[1]) > 0 and tonumber(tArgs[2]) > 0 then
     depth = tonumber(tArgs[1])
     width = tonumber(tArgs[2])
+    material = tArgs[3]
 
 else
     term.write("Insert depth: ")
@@ -27,6 +34,10 @@ else
 
 end
 
+if material = nil then
+    print("no matter")
+else
+    print("material")
 
 --should the turtle dig up
 local shouldDigUp = true
@@ -40,6 +51,9 @@ function slotsEmpty()
     end
     return false
 end
+
+function checkForMatter()
+
 
 
 function refuel()
