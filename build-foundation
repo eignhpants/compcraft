@@ -34,7 +34,7 @@ else
 
 end
 
-if material = nil then
+if material == nil then
     print("no matter")
 else
     print("material")
