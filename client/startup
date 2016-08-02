@@ -1,1 +1,2 @@
+shell.setPath(shell.path()..":/bin")
 shell.run("bg client/receive")
