@@ -12,7 +12,7 @@ tArgs = {...}
 
 --print(tArgs[1] .. " " .. type(tArgs[1]) .. " " .. tArgs[2] .. " " .. type(tArgs[2]) .. " " .. tArgs[3] .. " " .. type(tArgs[3]))
 
-if #tArgs ~= 1 then
+if #tArgs >= 2 then
     print( "Usage: build-foundation <depth> <width> <material>" )
     return
 end
