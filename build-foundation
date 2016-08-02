@@ -38,6 +38,7 @@ if material == nil then
     print("no matter")
 else
     print("material")
+end
 
 --should the turtle dig up
 local shouldDigUp = true
