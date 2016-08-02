@@ -4,7 +4,7 @@
 
 
 local FUEL_SLOT = 1
-
+local MATERIAL_SLOT = 2
 
 
 
@@ -12,32 +12,20 @@ tArgs = {...}
 
 --print(tArgs[1] .. " " .. type(tArgs[1]) .. " " .. tArgs[2] .. " " .. type(tArgs[2]) .. " " .. tArgs[3] .. " " .. type(tArgs[3]))
 
-if type(tArgs[1]) == "string" and type(tArgs[2]) == "string" and type(tArgs[3]) == "string" and tonumber(tArgs[1]) > 0 and tonumber(tArgs[2]) > 0 and tonumber(tArgs[3]) ~= 0 then
+if type(tArgs[1]) == "string" and type(tArgs[2]) == "string" and tonumber(tArgs[1]) > 0 and tonumber(tArgs[2]) > 0 and tonumber(tArgs[3]) ~= 0 then
     depth = tonumber(tArgs[1])
-    height = tonumber(tArgs[3])
+    width = tonumber(tArgs[2])
+
 else
     term.write("Insert depth: ")
     depth = tonumber(read())
     print(" ")
 
-    term.write("Insert height: ")
-    height = tonumber(read())
+    term.write("Insert width: ")
+    width = tonumber(read())
     print(" ")
+
 end
-
-
-
-if height < 0 then
-    height = height * (-1)
-    shouldDigUp = false
-end
-
-height = height -1
-
-
-
-
-
 
 
 --should the turtle dig up
@@ -104,7 +92,7 @@ function back()
     end
 end
 
-function buildLine()
+function clearLine()
     for i = 1, depth do
         if turtle.getFuelLevel() < 10 then
             refuel()
@@ -122,4 +110,44 @@ function buildLine()
 end
 
 
-clearWall()
+function buildLine()
+    turtle.up()
+    for i = 1, depth do
+        if turtle.getFuelLevel() < 10 then
+            refuel()
+        end
+
+        turtle.forward()
+        turtle.placeDown()
+    end
+
+    for i = 1, depth do
+        back()
+    end
+    turtle.down()
+end
+
+function build()
+    for i = 1, width do
+        buildLine()
+        turtle.turnRight()
+        forward()
+        turtle.turnLeft()
+    end
+
+    turtle.turnLeft()
+
+    for i = 1, width+1 do
+        forward()
+    end
+
+    turtle.turnRight()
+end
+
+
+build()
+
+
+
+
+
