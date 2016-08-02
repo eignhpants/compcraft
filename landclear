@@ -38,7 +38,7 @@ if height < 0 then
 end
 
 height = height -1
-clearCube()
+
 
 
 
@@ -173,3 +173,5 @@ function clearCube()
 
     turtle.turnRight()
 end
+
+clearCube()
