@@ -1,7 +1,7 @@
 local connections = {}
 
 function broadcast(msg)
-    rednet.boradcast(msg)
+    rednet.broadcast(msg)
 end
 
 function addConnection(id)
