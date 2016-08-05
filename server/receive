@@ -1,4 +1,4 @@
-rednet.open("top")
+rednet.open("right")
 
 local run = true
 
