@@ -1,0 +1,136 @@
+os.loadAPI("./bin/com")
+
+local FUEL_SLOT = 1
+
+tArgs = {...}
+
+--print(tArgs[1] .. " " .. type(tArgs[1]) .. " " .. tArgs[2] .. " " .. type(tArgs[2]) .. " " .. tArgs[3] .. " " .. type(tArgs[3]))
+
+if type(tArgs[1]) == "string" and type(tArgs[2]) == "string" and type(tArgs[3]) == "string" and tonumber(tArgs[1]) > 0 and tonumber(tArgs[2]) > 0 and tonumber(tArgs[3]) ~= 0 then
+    depth = tonumber(tArgs[1])
+    width = tonumber(tArgs[2])
+    height = tonumber(tArgs[3])
+else
+    term.write("Insert depth: ")
+    depth = tonumber(read())
+    print(" ")
+
+    term.write("Insert width: ")
+    width = tonumber(read())
+    print(" ")
+
+    term.write("Insert height: ")
+    height = tonumber(read())
+    print(" ")
+end
+
+
+
+if height < 0 then
+    height = height * (-1)
+    shouldDigUp = false
+end
+
+height = height -1
+
+
+
+
+
+
+
+--should the turtle dig up
+local shouldDigUp = true
+
+-- @return true if any slot is empty
+function slotsEmpty()
+    for i=1, 16 do
+        if turtle.getItemCount(i) < 1 then
+            return true
+        end
+    end
+    return false
+end
+
+
+function refuel()
+    turtle.select(FUEL_SLOT)
+    turtle.refuel()
+end
+
+function clear()
+    term.clear()
+    term.setCursorPos(1,1)
+end
+
+--com.up()
+--com.down()
+--com.forward()
+--com.back()
+
+function clearLine()
+    for i = 1, depth do
+        if turtle.getFuelLevel() < 10 then
+            refuel()
+        end
+
+        turtle.dig()
+        com.forward()
+        turtle.digUp()
+        turtle.digDown()
+    end
+
+    for i = 1, depth do
+        back()
+    end
+end
+
+function clearWall()
+    local i=1
+    while i <= height do
+        if turtle.getFuelLevel() < 10 then
+            refuel()
+        end
+
+        if shouldDigUp then turtle.digUp() else turtle.digDown() end
+
+        if i < height and i > 1  then
+            if shouldDigUp then com.up() else com.down() end
+            if shouldDigUp then turtle.digUp() else turtle.digDown() end
+            i = i + 1
+        end
+
+        if i < height  then
+            if shouldDigUp then com.up() else com.down() end
+            if shouldDigUp then turtle.digUp() else turtle.digDown() end
+            i = i + 1
+        end
+
+        clearLine()
+        if shouldDigUp then com.up() else com.down() end
+        i = i +1
+    end
+
+    for i = 1, height do
+        if shouldDigUp then com.down() else com.up() end
+    end
+end
+
+function clearCube()
+    for i = 1, width do
+        clearWall()
+        turtle.turnRight()
+        com.forward()
+        turtle.turnLeft()
+    end
+
+    turtle.turnLeft()
+
+    for i = 1, width+1 do
+        com.forward()
+    end
+
+    turtle.turnRight()
+end
+
+clearCube()

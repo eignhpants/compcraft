@@ -1,0 +1,41 @@
+
+
+function up()
+    while not turtle.up() do
+        if turtle.getFuelLevel() < 10 then
+            refuel()
+        end
+        turtle.digUp()
+    end
+end
+
+function down()
+    while not turtle.down() do
+        if turtle.getFuelLevel() < 10 then
+            refuel()
+        end
+        turtle.digDown()
+    end
+end
+
+function forward()
+    while not turtle.forward() do
+        if turtle.getFuelLevel() < 10 then
+            refuel()
+        end
+        turtle.dig()
+    end
+end
+
+function back()
+    while not turtle.back() do
+        if turtle.getFuelLevel() < 10 then
+            refuel()
+        end
+        turtle.turnLeft()
+        turtle.turnLeft()
+        turtle.dig()
+        turtle.turnLeft()
+        turtle.turnLeft()
+    end
+end
